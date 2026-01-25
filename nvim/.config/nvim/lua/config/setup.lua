@@ -47,3 +47,9 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     vim.highlight.on_yank()
   end,
 })
+
+vim.filetype.add({
+  pattern = {
+    [".*/i3/config.d/.*%.conf"] = "i3config",
+  },
+})

@@ -1,0 +1,26 @@
+// vim:ts=4:sw=4:et
+{
+    "border": "none",
+    "current_border_width": 0,
+    "floating": "auto_off",
+    "geometry": {
+       "height": 699,
+       "width": 1280,
+       "x": 0,
+       "y": 540
+    },
+    "marks": [],
+    "name": "Hitsujibungaku - more than words",
+    "percent": 1,
+    "swallows": [
+       {
+       "class": "^Spotify$",
+       "instance": "^spotify$",
+       "machine": "^archlinux$",
+       "title": "^Hitsujibungaku\\ \\-\\ more\\ than\\ words$",
+       "window_role": "^spotify$"
+       }
+    ],
+    "type": "con"
+}
+
