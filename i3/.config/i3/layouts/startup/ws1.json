@@ -15,9 +15,6 @@
     "swallows": [
        {
        "class": "^Alacritty$",
-       "instance": "^Alacritty$",
-       "machine": "^archlinux$",
-       "title": "^bdeboer\\@archlinux\\:\\~$"
        }
     ],
     "type": "con"

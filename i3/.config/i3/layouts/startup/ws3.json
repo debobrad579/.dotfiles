@@ -15,10 +15,6 @@
     "swallows": [
        {
        "class": "^Spotify$",
-       "instance": "^spotify$",
-       "machine": "^archlinux$",
-       "title": "^Hitsujibungaku\\ \\-\\ more\\ than\\ words$",
-       "window_role": "^spotify$"
        }
     ],
     "type": "con"
