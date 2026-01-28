@@ -7,6 +7,7 @@ chromium 144.0.7559.96-1
 cups 2:2.4.16-1
 cups-pk-helper 0.2.7-2
 dmenu 5.4-1
+docker 1:29.2.0-1
 dunst 1.13.0-1
 efibootmgr 18-3
 fastfetch 2.58.0-1
@@ -31,12 +32,13 @@ linux-firmware 20260110-1
 linux-headers 6.18.6.arch1-1
 neovim 0.11.5-1
 networkmanager 1.54.3-1
-nodejs 25.3.0-1
+nodejs 25.4.0-1
 notification-daemon 3.20.0-7
 noto-fonts 1:2026.01.01-1
 noto-fonts-cjk 20240730-1
 noto-fonts-extra 1:2026.01.01-1
 npm 11.7.0-1
+openssh 10.2p1-2
 perl-anyevent-i3 0.19-3
 pipewire 1:1.4.10-1
 pipewire-alsa 1:1.4.10-1
@@ -51,7 +53,7 @@ sudo 1.9.17.p2-2
 system-config-printer 1.5.18-6
 thunar 4.20.7-1
 tmux 3.6_a-1
-ttf-jetbrains-mono-nerd 3.4.0-1
+ttf-jetbrains-mono-nerd 3.4.0-2
 unzip 6.0-23
 upower 1.91.0-1
 vim 9.1.2077-1
