@@ -8,3 +8,7 @@ perl
 neovim
 vim
 docker
+zsh
+fzf
+zoxide
+stow
