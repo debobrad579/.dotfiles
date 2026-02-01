@@ -1,0 +1,4 @@
+spotify-launcher
+firefox
+chromium
+thunar

@@ -1,0 +1,7 @@
+xclip
+unzip
+wget
+xdg-utils
+htop
+fastfetch
+unclutter

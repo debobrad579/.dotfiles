@@ -10,6 +10,23 @@ color=#0db7ed
 [spotify]
 signal=3
 color=#1DB954
+separator_block_width=0
+min_width=0
+
+[spotify-previous]
+signal=8
+color=#1DB954
+separator_block_width=10
+
+[spotify-play-pause]
+signal=7
+color=#1DB954
+separator_block_width=10
+
+[spotify-next]
+signal=9
+color=#1DB954
+separator_block_width=10
 
 [bluetooth]
 signal=2

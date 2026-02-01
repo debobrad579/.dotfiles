@@ -1,0 +1,6 @@
+networkmanager
+iw
+iwd
+reflector
+bluez
+bluez-utils

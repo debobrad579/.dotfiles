@@ -9,14 +9,15 @@ if ! pgrep -x "spotify" > /dev/null; then
 fi
 
 artist=$(playerctl --player=spotify metadata artist 2>/dev/null)
-title=$(playerctl --player=spotify metadata title 2>/dev/null)
 
-if [[ -z "$artist" || -z "$title" ]]; then
+if [[ -z "$artist" ]]; then
     exit
 fi
 
-if [[ "$BAR_ROLE" == "main" ]]; then
-    echo " $artist - $title"
+status=$(playerctl --player=spotify status 2>/dev/null)
+
+if [[ "$status" == "Playing" ]]; then
+    echo ""
 else
-    echo " $artist"
+    echo ""
 fi

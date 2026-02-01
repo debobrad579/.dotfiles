@@ -1,0 +1,10 @@
+git
+sudo
+openssh
+go
+nodejs
+npm
+perl
+neovim
+vim
+docker

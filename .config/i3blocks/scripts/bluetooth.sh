@@ -10,7 +10,7 @@ if ! systemctl is-active --quiet bluetooth; then
 fi
 
 if [[ -z "$devices" ]]; then
-    echo "󰂯 No device connected"
+    echo "󰂯"
     echo "󰂯"
     echo "#5C6370"
     exit
@@ -42,6 +42,12 @@ for device in $devices; do
     icons+="$icon "
 done
 
-echo ${output%?}
-echo ${icons%?}
-echo "#3B99FC"
+if [[ "$BAR_ROLE" == "main" ]]; then
+    echo ${output%?}
+    echo ${output%?}
+    echo "#3B99FC"
+else
+    echo ${icons%?}
+    echo ${icons%?}
+    echo "#3B99FC"
+fi

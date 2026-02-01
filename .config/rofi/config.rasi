@@ -1,0 +1,106 @@
+configuration {
+    modi: "window,drun,run";
+    combi-modi: "window,drun,run";
+    display-window: "Windows:";
+    display-drun: "Applications:";
+    display-run: "Run:";
+    display-combi: "Menu:";
+    drun-display-format: "{icon} {name}";
+    show-icons: true;
+    icon-theme: "Papirus";
+}
+
+@theme "onedark"
+
+* {
+    font: "JetBrainsMono Nerd Font Mono 10";
+    text-color: @text;
+    background-color: transparent;
+}
+
+window {
+    location: center;
+    border-radius: 24px;
+    background-color: @bg;
+    border: 2px;
+    border-color: @emphasis;
+    box-shadow: none;
+    width: 45%;
+    height: 45%;
+}
+
+mainbox {
+    padding: 12px;
+}
+
+inputbar {
+    background-color: @emphasis;
+    border: 2px;
+    border-color: @blue;
+    border-radius: 16px;
+    padding: 8px 16px;
+    spacing: 8px;
+    children: [ prompt, entry ];
+}
+
+prompt {
+    text-color: @blue;
+}
+
+entry {
+    placeholder: "Search";
+    placeholder-color: @cyan;
+    text-color: @text;
+}
+
+message {
+    margin: 12px 0 0;
+    border-radius: 16px;
+    background-color: @emphasis;
+    border: 1px;
+    border-color: @cyan;
+}
+
+textbox {
+    padding: 8px 24px;
+    background-color: @emphasis;
+    text-color: @text;
+}
+
+listview {
+    background-color: transparent;
+    margin: 12px 0 0;
+    columns: 1;
+    lines: 2;
+    fixed-height: false;
+}
+
+element {
+    padding: 8px 16px;
+    spacing: 8px;
+    border-radius: 16px;
+    text-color: @text-alt;
+}
+
+element normal urgent {
+    text-color: @red;
+}
+
+element normal active {
+    text-color: @blue;
+}
+
+element selected normal,
+element selected active {
+    background-color: @emphasis;
+    text-color: @text;
+}
+
+element-icon {
+    size: 1em;
+    vertical-align: 0.5;
+}
+
+element-text {
+    text-color: inherit;
+}

@@ -2,14 +2,25 @@
 
 INTERFACE="wlan0"
 
-if [[ ! -d /sys/class/net/${INTERFACE}/wireless ]] || [[ "$(cat /sys/class/net/$INTERFACE/operstate)" = 'down' ]]; then
+link_info=$(iw dev "$INTERFACE" link)
+
+if [[ $link_info != *Connected* ]]; then
     echo "󰤭"
     echo "󰤭"
     echo "#FF0000"
     exit
 fi
 
-quality=$(iw dev ${INTERFACE} link | grep 'dBm$' | grep -Eoe '-[0-9]{2}' | awk '{print  ($1 > -50 ? 100 :($1 < -100 ? 0 : ($1+100)*2))}')
+read -r ssid rssi <<< "$(
+    awk -F': ' '
+        /SSID/ {ssid=$2}
+        /signal/ {rssi=$2}
+        END {print ssid, rssi}
+    ' <<< "$link_info"
+)"
+
+rssi=${rssi% dBm}
+quality=$(( rssi > -50 ? 100 : rssi < -100 ? 0 : (rssi + 100) * 2 ))
 
 if [[ $quality -ge 80 ]]; then
     icon="󰤨"
@@ -28,8 +39,12 @@ else
     color="#FF0000"
 fi
 
-ssid=$(iw dev ${INTERFACE} link | awk -F': ' '/SSID/ {print $2}')
-
-echo "$icon $ssid ($quality%)"
-echo "$icon $quality%"
-echo $color
+if [[ "$BAR_ROLE" == "main" ]]; then
+    echo "$icon $ssid ($quality%)"
+    echo "$icon $ssid ($quality%)"
+    echo $color
+else
+    echo "$icon $quality%"
+    echo "$icon $quality%"
+    echo $color
+fi
