@@ -39,10 +39,7 @@ sudo reflector \
 ### Install Pipewire (Audio)
 
 ```bash
-sudo pacman -S --needed pipewire pipewire-alsa pipewire-pulse wireplumber
-
-# Optional:
-sudo pacman -S pipewire-jack
+sudo pacman -S --needed pipewire pipewire-alsa pipewire-jack pipewire-pulse wireplumber
 ```
 
 ### Configure Bluetooth
@@ -136,8 +133,10 @@ sudo pacman -S --needed \
     xss-lock \
     picom \
     rofi \
+    iw \
     playerctl \
-    unclutter
+    unclutter \
+    upower
 ```
 
 2. Install fonts and icons:
