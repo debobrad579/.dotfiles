@@ -134,6 +134,7 @@ sudo pacman -S --needed \
     picom \
     rofi \
     iw \
+    iwd \
     playerctl \
     unclutter \
     upower
