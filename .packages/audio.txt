@@ -1,9 +1,0 @@
-pipewire
-pipewire-alsa
-pipewire-jack
-pipewire-pulse
-wireplumber
-libpulse
-gst-plugin-pipewire
-playerctl
-sof-firmware

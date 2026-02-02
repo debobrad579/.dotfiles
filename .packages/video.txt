@@ -1,5 +1,0 @@
-xf86-video-nouveau
-vulkan-intel
-vulkan-nouveau
-intel-media-driver
-libva-intel-driver

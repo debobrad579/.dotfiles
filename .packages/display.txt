@@ -1,4 +1,0 @@
-xorg-xinit
-xorg-xrandr
-xss-lock
-xdg-utils
