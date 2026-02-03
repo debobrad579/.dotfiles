@@ -1,7 +1,9 @@
 #!/bin/bash
 
 case $BLOCK_BUTTON in
-    1) playerctl -p spotify play-pause
+    1) playerctl -p spotify play-pause ;;
+    4) playerctl --player=spotify volume 0.05+ ;;
+    5) playerctl --player=spotify volume 0.05- 
 esac
 
 if ! pgrep -x "spotify" > /dev/null; then
