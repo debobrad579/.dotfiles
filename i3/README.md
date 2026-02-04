@@ -152,7 +152,7 @@ sudo pacman -S --needed \
 
 3. Install applications:
 ```bash
-sudo pacman -S --needed alacritty thunar firefox spotify-launcher
+sudo pacman -S --needed alacritty thunar qutebrowser spotify-launcher
 ```
 
 4. Install other useful utilities (optional but recommended):
@@ -162,6 +162,9 @@ sudo pacman -S --needed base-devel wget openssh unzip xdg-utils xclip
 
 # System monitoring
 sudo pacman -S --needed htop fastfetch
+
+# Alternative browsers
+sudo pacman -S --needed firefox chromium
 ```
 
 5. Symlink the config:
