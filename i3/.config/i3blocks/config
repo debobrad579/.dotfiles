@@ -3,6 +3,9 @@ separator_block_width=16
 command=scripts/$BLOCK_NAME.sh
 interval=once
 
+[dev]
+interval=5
+
 [docker]
 signal=6
 color=#0db7ed

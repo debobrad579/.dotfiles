@@ -64,6 +64,24 @@ connect <MAC>
 trust <MAC>
 ```
 
+### Configure Printing (Optional)
+
+1. Install necessary packages:
+```bash
+sudo pacman -S --needed cups cups-pk-helper system-config-printer
+```
+
+2. Enable CUPS:
+```bash
+sudo systemctl enable --now cups
+```
+
+3. Add user to the `lp` group:
+```bash
+sudo usermod -aG lp $USER
+newgrp lp # Or relog to apply changes
+```
+
 ### Install Graphics Drivers
 
 ```bash
@@ -104,22 +122,22 @@ sudo usermod -aG docker $USER
 newgrp docker # Or relog to apply changes
 ```
 
-### Configure Printing (Optional)
+### Install an AUR Helper
 
-1. Install necessary packages:
+1. Install dependencies:
 ```bash
-sudo pacman -S --needed cups cups-pk-helper system-config-printer
+sudo pacman -S --needed base-devel git
 ```
 
-2. Enable CUPS:
+2. Clone the repository:
 ```bash
-sudo systemctl enable --now cups
+git clone https://aur.archlinux.org/yay-bin.git
 ```
 
-3. Add user to the `lp` group:
+3. Install the package:
 ```bash
-sudo usermod -aG lp $USER
-newgrp lp # Or relog to apply changes
+cd yay-bin
+makepkg -si
 ```
 
 ## Installation
@@ -152,19 +170,23 @@ sudo pacman -S --needed \
 
 3. Install applications:
 ```bash
-sudo pacman -S --needed alacritty thunar qutebrowser spotify-launcher
+sudo pacman -S --needed alacritty thunar spotify-launcher
+yay -S zen-browser-bin
 ```
 
 4. Install other useful utilities (optional but recommended):
 ```bash
 # Core utilities
-sudo pacman -S --needed base-devel wget openssh unzip xdg-utils xclip
+sudo pacman -S --needed base-devel less wget openssh unzip xdg-utils xclip
 
 # System monitoring
 sudo pacman -S --needed htop fastfetch
 
+# USB Flashing
+sudo pacman -S caligula
+
 # Alternative browsers
-sudo pacman -S --needed firefox chromium
+sudo pacman -S --needed chromium firefox qutebrowser
 ```
 
 5. Symlink the config:
