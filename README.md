@@ -17,7 +17,7 @@ sudo pacman -S stow
 
 1. Clone this repository to your home directory:
 ```bash
-git clone https://github.com/debobrad579/.dotfiles.git ~/.dotfiles
+git clone git@github.com:debobrad579/.dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
 ```
 
