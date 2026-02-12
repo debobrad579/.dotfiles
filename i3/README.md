@@ -155,7 +155,8 @@ sudo pacman -S --needed \
     iwd \
     playerctl \
     unclutter \
-    upower
+    upower \
+    scrot
 ```
 
 2. Install fonts and icons:
