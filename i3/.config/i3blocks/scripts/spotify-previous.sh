@@ -1,14 +1,14 @@
 #!/bin/bash
 
 case $BLOCK_BUTTON in
-    1) playerctl -p spotify previous
+    1) playerctl -p spotifyd previous
 esac
 
-if ! pgrep -x "spotify" > /dev/null; then
+if ! pgrep -x "spotifyd" > /dev/null; then
     exit
 fi
 
-artist=$(playerctl --player=spotify metadata artist 2>/dev/null)
+artist=$(playerctl --player=spotifyd metadata artist 2>/dev/null)
 
 if [[ -z "$artist" ]]; then
     exit

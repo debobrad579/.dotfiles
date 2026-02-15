@@ -1,20 +1,20 @@
 #!/bin/bash
 
 case $BLOCK_BUTTON in
-    1) playerctl -p spotify play-pause
+    1) playerctl -p spotifyd play-pause
 esac
 
-if ! pgrep -x "spotify" > /dev/null; then
+if ! pgrep -x "spotifyd" > /dev/null; then
     exit
 fi
 
-artist=$(playerctl --player=spotify metadata artist 2>/dev/null)
+artist=$(playerctl --player=spotifyd metadata artist 2>/dev/null)
 
 if [[ -z "$artist" ]]; then
     exit
 fi
 
-status=$(playerctl --player=spotify status 2>/dev/null)
+status=$(playerctl --player=spotifyd status 2>/dev/null)
 
 if [[ "$status" == "Playing" ]]; then
     echo ""

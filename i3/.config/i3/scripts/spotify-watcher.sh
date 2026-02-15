@@ -4,8 +4,12 @@ prev_title=""
 prev_artist=""
 prev_status=""
 
-playerctl -p spotify metadata --follow --format "{{ title }}|||{{ artist }}|||{{ status }}" | while IFS="|||" read -r title artist status; do
+playerctl -p spotifyd metadata --follow --format "{{ title }}|||{{ artist }}|||{{ status }}" | while IFS="|||" read -r title artist status; do
     if [ -z "$title" ] && [ -z "$artist" ] && [ -z "$status" ]; then
+        pkill -SIGRTMIN+3 i3blocks
+        pkill -SIGRTMIN+7 i3blocks
+        pkill -SIGRTMIN+8 i3blocks
+        pkill -SIGRTMIN+9 i3blocks
         continue
     fi
 

@@ -104,6 +104,24 @@ sudo pacman -S --needed nvidia-open nvidia-utils
 sudo pacman -S --needed xorg-server xorg-xinit xorg-xrandr
 ```
 
+### Install an AUR Helper
+
+1. Install necessary dependencies:
+```bash
+sudo pacman -S --needed base-devel git
+```
+
+2. Clone the repository:
+```bash
+git clone https://aur.archlinux.org/yay-bin.git
+```
+
+3. Install the package:
+```bash
+cd yay-bin
+makepkg -si
+```
+
 ### Configure Docker
 
 1. Install docker:
@@ -122,22 +140,17 @@ sudo usermod -aG docker $USER
 newgrp docker # Or relog to apply changes
 ```
 
-### Install an AUR Helper
+### Install Spotify Daemon
 
-1. Install dependencies:
+1. Install necessary packages:
 ```bash
-sudo pacman -S --needed base-devel git
+sudo pacman -S --needed playerctl spotifyd
 ```
 
-2. Clone the repository:
+2. Enable spotify daemon:
 ```bash
-git clone https://aur.archlinux.org/yay-bin.git
-```
-
-3. Install the package:
-```bash
-cd yay-bin
-makepkg -si
+systemctl --user start spotifyd
+systemctl --user enable --now spotifyd
 ```
 
 ## Installation
@@ -153,9 +166,8 @@ sudo pacman -S --needed \
     rofi \
     iw \
     iwd \
-    playerctl \
-    unclutter \
     upower \
+    unclutter \
     scrot
 ```
 
@@ -171,22 +183,25 @@ sudo pacman -S --needed \
 
 3. Install applications:
 ```bash
-sudo pacman -S --needed alacritty thunar spotify-launcher
+sudo pacman -S --needed alacritty thunar
 yay -S zen-browser-bin
 ```
 
-4. Install other useful utilities (optional but recommended):
+4. Install other useful utilities:
 ```bash
 # Core utilities
-sudo pacman -S --needed base-devel less wget openssh unzip xdg-utils xclip
+sudo pacman -S --needed base-devel git less wget openssh unzip xdg-utils xclip
 
-# System monitoring
-sudo pacman -S --needed htop fastfetch
+# Symlink Management
+sudo pacman -S stow
 
-# USB Flashing
+# USB Flashing (Optional)
 sudo pacman -S caligula
 
-# Alternative browsers
+# System monitoring (Optional)
+sudo pacman -S --needed htop fastfetch
+
+# Alternative browsers (Optional)
 sudo pacman -S --needed chromium firefox qutebrowser
 ```
 
