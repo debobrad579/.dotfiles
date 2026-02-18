@@ -222,7 +222,7 @@ stow i3
     - Option 2 - Ly:
     ```bash
     sudo pacman -S ly
-    sudo systemctl enable ly@tty2
+    sudo systemctl enable ly@tty1
     ```
 
     - Option 3 - No display manager:

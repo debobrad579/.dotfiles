@@ -90,6 +90,9 @@ else
     color="#FF0000"
 fi
 
-echo "$icon $battery%"
-echo $icon
+if [[ "$BAR_ROLE" == "main" ]]; then
+    echo "$icon $battery%"; echo "$icon $battery%"
+else
+    echo $icon; echo $icon
+fi
 echo $color

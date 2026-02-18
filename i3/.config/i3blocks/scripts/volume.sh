@@ -12,10 +12,7 @@ volume=$(pactl get-sink-volume @DEFAULT_SINK@ \
 muted=$(pactl get-sink-mute @DEFAULT_SINK@ | awk '{print $2}')
 
 if [[ $muted == "yes" ]]; then
-    echo "󰸈 ($volume%)"
-    echo "󰸈"
-    echo "#5C6370"
-    exit
+    echo "󰸈 ($volume%)"; echo "󰸈 ($volume%)"; echo "#5C6370"; exit
 fi
 
 if [[ $volume -ge 70 ]]; then
