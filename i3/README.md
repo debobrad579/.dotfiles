@@ -126,7 +126,7 @@ makepkg -si
 
 1. Install docker:
 ```bash
-sudo pacman -S docker
+sudo pacman -S --needed docker docker-compose docker-buildx
 ```
 
 2. Enable docker:

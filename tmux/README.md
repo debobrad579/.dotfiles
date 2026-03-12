@@ -1,16 +1,11 @@
 ## Installation
 
-1. Install tmux:
+1. Install necessary packages:
 ```bash
-sudo pacman -S tmux
+sudo pacman -S tmux fzf
 ```
 
-2. Clone TPM (tmux plugin manager):
-```bash
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-```
-
-3. Symlink the config:
+2. Symlink the config:
 ```bash
 cd ~/.dotfiles
 stow tmux

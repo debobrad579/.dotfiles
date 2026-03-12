@@ -92,12 +92,35 @@ autoload -U compinit && compinit
 
 zinit cdreplay -q
 
-# Vim Mode
+# Remaps
 ZVM_SYSTEM_CLIPBOARD_ENABLED=true
 zvm_after_init() {
     zvm_bindkey viins '^Y' autosuggest-accept
     zvm_bindkey viins '^P' history-beginning-search-backward
     zvm_bindkey viins '^N' history-beginning-search-forward
+
+    zvm_bindkey vicmd 'p' zvm_vi_put_after
+    zvm_bindkey vicmd 'P' zvm_vi_put_before
+
+    bindkey -s '^f' "tmux-sessionizer\n"
+    bindkey -s '\eh' "tmux-sessionizer -s 0\n"
+    bindkey -s '\ej' "tmux-sessionizer -s 1\n"
+    bindkey -s '\ek' "tmux-sessionizer -s 2\n"
+    bindkey -s '\el' "tmux-sessionizer -s 3\n"
+
+    _paste_after() {
+        local clip=$(xclip -o -selection clipboard 2>/dev/null)
+        LBUFFER="${LBUFFER}${RBUFFER:0:1}${clip}"
+        RBUFFER="${RBUFFER:1}"
+    }
+    _paste_before() {
+        local clip=$(xclip -o -selection clipboard 2>/dev/null)
+        LBUFFER="${LBUFFER}${clip}"
+    }
+    zle -N _paste_after
+    zle -N _paste_before
+    zvm_bindkey vicmd 'p' _paste_after
+    zvm_bindkey vicmd 'P' _paste_before
 }
 
 # History
@@ -127,6 +150,6 @@ eval "$(zoxide init --cmd cd zsh)"
 alias ls="ls --color"
 
 # Exports
-export PATH=$PATH:$HOME/go/bin
+export PATH="$HOME/.local/bin:$HOME/go/bin:$PATH"
 export EDITOR="nvim"
 export VISUAL="$EDITOR"

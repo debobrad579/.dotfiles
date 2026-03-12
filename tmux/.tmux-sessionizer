@@ -1,0 +1,8 @@
+tmux rename-window -t 1 editor
+tmux send-keys -t editor "nvim ." C-m
+
+tmux new-window -n commands
+
+tmux new-window -n server
+
+tmux select-window -t editor

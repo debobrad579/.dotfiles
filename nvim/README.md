@@ -7,11 +7,15 @@ sudo pacman -S --needed neovim ripgrep unzip xclip
 
 2. Install language dependencies:
 ```bash
-sudo pacman -S --needed nodejs npm go
+sudo pacman -S --needed nodejs npm go pgformatter
+sudo npm install -g prettier
 ```
 
 3. Symlink the config:
 ```bash
 cd ~/.dotfiles
 stow nvim
+
+# Optional, required for tmux sessionizer
+stow tmux
 ```
