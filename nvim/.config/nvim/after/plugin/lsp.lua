@@ -11,8 +11,10 @@ local on_attach = function(_, bufnr)
     vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, desc = desc })
   end
   bufmap('n', 'gd', vim.lsp.buf.definition, 'Go to definition')
-  bufmap('n', 'K', vim.lsp.buf.hover, 'Hover docs')
+  bufmap('n', '<leader>d', vim.lsp.buf.hover, 'Hover documentation')
   bufmap('n', '<leader>rn', vim.lsp.buf.rename, 'Rename')
+  bufmap('n', '<leader>q', vim.diagnostic.setloclist, 'Open diagnostic list')
+  bufmap('n', '<leader>e', vim.diagnostic.open_float, 'Open diagnostic float')
 end
 
 local servers = {
@@ -61,6 +63,10 @@ local servers = {
     capabilities = capabilities,
   },
   cssls = {
+    on_attach = on_attach,
+    capabilities = capabilities,
+  },
+  sqls = {
     on_attach = on_attach,
     capabilities = capabilities,
   },

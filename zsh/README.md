@@ -9,9 +9,6 @@ sudo pacman -S --needed zsh fzf zoxide xclip
 ```bash
 cd ~/.dotfiles
 stow zsh
-
-# Optional, required for tmux sessionizer
-stow tmux
 ```
 
 3. Set as your default shell:

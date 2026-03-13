@@ -1,4 +1,11 @@
-require('nvim-ts-autotag').setup()
-require('nvim-autopairs').setup {
+require('nvim-ts-autotag').setup({
+  opts = {
+    enable_close = true,
+    enable_close_on_slash = true,
+    enable_rename = false,
+  },
+})
+
+require('nvim-autopairs').setup({
   check_ts = true,
-}
+})

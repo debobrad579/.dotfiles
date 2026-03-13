@@ -18,9 +18,6 @@ vim.opt.timeoutlen = 300
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 
-vim.opt.list = true
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
-
 vim.opt.cursorline = true
 vim.opt.scrolloff = 10
 vim.opt.confirm = true
@@ -52,6 +49,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 vim.filetype.add({
   pattern = {
-    [".*/i3/config.d/.*%.conf"] = "i3config",
+    ['.*/i3/config.d/.*%.conf'] = 'i3config',
   },
 })
