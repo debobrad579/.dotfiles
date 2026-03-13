@@ -6,23 +6,23 @@
 	defaultBranch = main
 
 [core]
-  autocrlf = input
+	autocrlf = input
 	editor = nvim
 
 [pull]
-  rebase = true
+	rebase = true
 
 [push]
-  autoSetupRemote = true
+	autoSetupRemote = true
 
 [diff]
-  colorMoved = default
+	colorMoved = default
 
 [merge]
-  conflictstyle = zdiff3
+	conflictstyle = zdiff3
 
 [rerere]
-  enabled = true
+	enabled = true
 
 [color]
-  ui = auto
+	ui = auto
