@@ -1,0 +1,28 @@
+[user]
+	email = bradydeboer195@gmail.com
+	name = Brady DeBoer
+
+[init]
+	defaultBranch = main
+
+[core]
+  autocrlf = input
+	editor = nvim
+
+[pull]
+  rebase = true
+
+[push]
+  autoSetupRemote = true
+
+[diff]
+  colorMoved = default
+
+[merge]
+  conflictstyle = zdiff3
+
+[rerere]
+  enabled = true
+
+[color]
+  ui = auto
