@@ -24,6 +24,13 @@ local servers = {
       client.server_capabilities.documentFormattingProvider = false
     end,
     capabilities = capabilities,
+    settings = {
+      typescript = {
+        preferences = {
+          preferTypeOnlyAutoImports = true,
+        },
+      },
+    },
   },
   eslint = {
     on_attach = on_attach,

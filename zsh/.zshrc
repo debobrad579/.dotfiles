@@ -9,25 +9,6 @@ zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' unstagedstr '*'
 zstyle ':vcs_info:*' stagedstr '+'
 
-exit_status() {
-  if [[ $? -ne 0 ]]; then
-    echo "%F{red}✘%f "
-  fi
-}
-
-git_prompt() {
-  if [[ -n "$vcs_info_msg_0_" ]]; then
-    echo "%F{magenta}$vcs_info_msg_0_%f "
-  fi
-}
-
-_prompt_full='$(exit_status)%F{green}%n@%m%f %F{blue}%~%f $(git_prompt)
-%F{cyan}❯%f '
-_prompt_transient='%F{cyan}❯%f '
-
-PROMPT=$_prompt_full
-
-# Right Prompt
 preexec() {
   timer_start=$EPOCHREALTIME
 }
@@ -40,17 +21,44 @@ precmd() {
   vcs_info
   
   PROMPT=$_prompt_full
-  RPROMPT='$(cmd_time)'
+  RPROMPT='$(right_prompt_text)'
 }
 
-cmd_time() {
-  if [[ -n "$timer_show" ]]; then
-    local sec=${timer_show%.*}
-    (( sec >= 1 )) && echo "%F{yellow}⏱ ${timer_show}s%f"
+# Left Prompt
+venv_prompt() {
+  if [[ -n "$VIRTUAL_ENV" ]]; then
+    echo "%F{yellow}(${VIRTUAL_ENV:t})%f "
   fi
 }
 
-RPROMPT='$(cmd_time)'
+git_prompt() {
+  if [[ -n "$vcs_info_msg_0_" ]]; then
+    echo "%F{magenta}$vcs_info_msg_0_%f "
+  fi
+}
+
+_prompt_full='$(venv_prompt)%F{green}%n@%m%f %F{blue}%~%f $(git_prompt)
+%F{cyan}❯%f '
+_prompt_transient='%F{cyan}❯%f '
+
+PROMPT=$_prompt_full
+
+# Right Prompt
+right_prompt_text() {
+  local exitcode=$?
+  if [[ $exitcode -eq 130 ]]; then
+    return
+  fi
+
+  if [[ $exitcode -eq 0 ]]; then
+    local sec=${timer_show%.*}
+    (( sec >= 1 )) && echo "%F{yellow}⏱ ${timer_show}s%f"
+  elif [[ -n "$timer_show" ]]; then
+    echo "%F{red}✖ $exitcode%f"
+  fi
+}
+
+RPROMPT='$(right_prompt_text)'
 
 # Transient Prompt
 zle-line-init() {
@@ -155,3 +163,20 @@ alias ls="ls --color"
 export PATH="$HOME/.local/bin:$HOME/go/bin:$PATH"
 export EDITOR="nvim"
 export VISUAL="$EDITOR"
+
+# Auto activate virtual evironment
+auto_venv() {
+  [[ -n "$VIRTUAL_ENV" ]] && return
+
+  for d in .venv venv env; do
+    if [[ -f "$PWD/$d/bin/activate" ]]; then
+      source "$PWD/$d/bin/activate"
+      return
+    fi
+  done
+}
+
+autoload -U add-zsh-hook
+add-zsh-hook chpwd auto_venv
+
+auto_venv
