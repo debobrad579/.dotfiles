@@ -1,7 +1,7 @@
 require('mason').setup()
 require('mason-lspconfig').setup {
   automatic_installation = true,
-  ensure_installed = { 'ts_ls', 'eslint', 'lua_ls', 'pyright', 'gopls', 'html', 'cssls', 'sqls', 'clangd' },
+  ensure_installed = { 'ts_ls', 'eslint', 'lua_ls', 'pyright', 'gopls', 'html', 'cssls', 'sqls', 'clangd', 'ocamllsp' },
 }
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
@@ -86,6 +86,10 @@ local servers = {
     },
   },
   clangd = {
+    on_attach = on_attach,
+    capabilities = capabilities,
+  },
+  ocamllsp = {
     on_attach = on_attach,
     capabilities = capabilities,
   },
