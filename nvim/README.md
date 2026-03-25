@@ -2,7 +2,8 @@
 
 1. Install dependencies:
 ```bash
-sudo pacman -S --needed base-devel neovim ripgrep unzip xclip
+sudo pacman -S --needed base-devel neovim ripgrep unzip xclip rust
+cargo install tree-sitter-cli
 ```
 
 2. Set up languages:
@@ -19,12 +20,12 @@ sudo pacman -S go
 
 - Python:
 ```bash
-sudo pacman -S python python-black
+sudo pacman -S --needed python python-black
 ```
 
 - PostgreSQL:
 ```bash
-sudo pacman -S postgresql pgformatter
+sudo pacman -S --needed postgresql pgformatter
 sudo -u postgres initdb --locale en_CA.UTF-8 -D /var/lib/postgres/data
 sudo systemctl enable --now postgresql
 ```
