@@ -16,11 +16,13 @@ return {
         'go',
         'ocaml',
         'bash',
+        'sql',
         'dockerfile',
         'make',
         'json',
         'yaml',
         'toml',
+        'rust',
       }
       require('nvim-treesitter').install(parsers)
       vim.api.nvim_create_autocmd('FileType', {

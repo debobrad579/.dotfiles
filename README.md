@@ -8,7 +8,8 @@ This repository contains my personal configuration files for arch linux.
 ```bash
 sudo pacman -S git
 ```
-- GNU Stow - Symlink Manager
+
+- GNU Stow - Symlink Management
 ```bash
 sudo pacman -S stow
 ```
@@ -16,28 +17,35 @@ sudo pacman -S stow
 ## Installation
 
 1. Clone this repository to your home directory:
+
 ```bash
 git clone git@github.com:debobrad579/.dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
 ```
 
-2. Use GNU Stow to symlink the configurations you want:
+2. Install required dependencies:
 
 ```bash
-# Install all configurations:
-stow */
+# Install all dependencies:
+./install
 
-# Install individual configuration:
-stow <package-name>
+# Install dependencies for individual module:
+./install nvim
 ```
 
-3. Install the required dependencies for each component (see individual README files in each directory).
+3. Symlink configurations:
 
-## Uninstalling
+```bash
+# Symlink every config:
+stow */
 
-To remove symlinks for a specific configuration:
+# Symlink config for individual module:
+stow nvim
+```
+
+To remove symlinks for a specific module:
 
 ```bash
 cd ~/.dotfiles
-stow -D <package-name>
+stow -D nvim
 ```

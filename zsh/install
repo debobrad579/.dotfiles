@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+sudo pacman -S --noconfirm --needed zsh fzf zoxide xclip
+
+if [[ "$(basename "$SHELL")" != "zsh" ]]; then
+  chsh -s $(which zsh)
+  echo "Default shell changed to zsh. Please relog."
+fi

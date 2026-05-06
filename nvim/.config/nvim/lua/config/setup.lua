@@ -31,6 +31,7 @@ vim.opt.breakindent = true
 
 vim.opt.autoindent = true
 vim.opt.smartindent = true
+vim.opt.colorcolumn = "80"
 
 vim.opt.swapfile = false
 vim.opt.backup = false
@@ -51,4 +52,16 @@ vim.filetype.add({
   pattern = {
     ['.*/i3/config.d/.*%.conf'] = 'i3config',
   },
+})
+
+vim.api.nvim_create_autocmd({ "FileType", "BufReadPost", "BufNewFile" }, {
+  pattern = "astro",
+  callback = function()
+    vim.schedule(function()
+      vim.bo.tabstop = 2
+      vim.bo.shiftwidth = 2
+      vim.bo.softtabstop = 2
+      vim.bo.expandtab = true
+    end)
+  end,
 })

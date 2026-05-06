@@ -15,4 +15,5 @@ return {
     'j-hui/fidget.nvim',
     opts = {},
   },
+  "b0o/schemastore.nvim",
 }

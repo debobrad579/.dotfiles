@@ -1,6 +1,6 @@
-## Prerequisite Arch Configuration
+# Additional Arch Configuration
 
-### Configure Wifi
+## Configure Wifi
 
 1. Install NetworkManager:
 ```bash
@@ -36,13 +36,13 @@ sudo reflector \
     --save /etc/pacman.d/mirrorlist
 ```
 
-### Install Pipewire (Audio)
+## Install Pipewire (Audio)
 
 ```bash
 sudo pacman -S --needed pipewire pipewire-alsa pipewire-jack pipewire-pulse wireplumber
 ```
 
-### Configure Bluetooth
+## Configure Bluetooth
 
 1. Install necessary packages:
 ```bash
@@ -64,7 +64,7 @@ connect <MAC>
 trust <MAC>
 ```
 
-### Configure Printing (Optional)
+## Configure Printing (Optional)
 
 1. Install necessary packages:
 ```bash
@@ -82,7 +82,7 @@ sudo usermod -aG lp $USER
 newgrp lp # Or relog to apply changes
 ```
 
-### Install Graphics Drivers
+## Install Graphics Drivers
 
 ```bash
 # Intel
@@ -98,31 +98,13 @@ sudo pacman -S --needed mesa vulkan-nouveau xf86-video-nouveau
 sudo pacman -S --needed nvidia-open nvidia-utils
 ```
 
-### Install Xorg Display Server
+## Install Xorg Display Server
 
 ```bash
 sudo pacman -S --needed xorg-server xorg-xinit xorg-xrandr
 ```
 
-### Install an AUR Helper
-
-1. Install necessary dependencies:
-```bash
-sudo pacman -S --needed base-devel git
-```
-
-2. Clone the repository:
-```bash
-git clone https://aur.archlinux.org/yay-bin.git
-```
-
-3. Install the package:
-```bash
-cd yay-bin
-makepkg -si
-```
-
-### Configure Docker
+## Configure Docker
 
 1. Install docker:
 ```bash
@@ -140,7 +122,7 @@ sudo usermod -aG docker $USER
 newgrp docker # Or relog to apply changes
 ```
 
-### Install Spotify Daemon
+## Install Spotify Daemon
 
 1. Install necessary packages:
 ```bash
@@ -153,85 +135,22 @@ systemctl --user start spotifyd
 systemctl --user enable --now spotifyd
 ```
 
-## Installation
+## Install a Display Manager
 
-1. Install dependencies (required for i3 and i3blocks config):
+- Option 1 - Lightdm:
 ```bash
-sudo pacman -S --needed \
-    i3-wm \
-    i3blocks \
-    i3lock \
-    xss-lock \
-    picom \
-    rofi \
-    iw \
-    iwd \
-    upower \
-    unclutter \
-    scrot
+sudo pacman -S lightdm lightdm-gtk-greeter
+sudo systemctl enable lightdm
 ```
 
-2. Install fonts and icons:
+- Option 2 - Ly:
 ```bash
-sudo pacman -S --needed \
-    noto-fonts \
-    noto-fonts-cjk \
-    noto-fonts-extra \
-    ttf-jetbrains-mono-nerd \
-    papirus-icon-theme
+sudo pacman -S ly
+sudo systemctl enable ly@tty1
 ```
 
-3. Install applications:
+- Option 3 - No display manager:
 ```bash
-sudo pacman -S --needed alacritty thunar
-yay -S zen-browser-bin
-```
-
-4. Install other useful utilities:
-```bash
-# Core utilities
-sudo pacman -S --needed base-devel git less wget openssh unzip xdg-utils xclip
-
-# Symlink Management
-sudo pacman -S stow
-
-# USB Flashing (Optional)
-sudo pacman -S caligula
-
-# System monitoring (Optional)
-sudo pacman -S --needed htop fastfetch
-
-# Alternative browsers (Optional)
-sudo pacman -S --needed chromium firefox qutebrowser
-```
-
-5. Symlink the config:
-```bash
-cd ~/.dotfiles
-stow i3
-```
-
-6. Install a display manager (optional but recommended):
-
-    - Option 1 - Lightdm:
-    ```bash
-    sudo pacman -S lightdm lightdm-gtk-greeter
-    sudo systemctl enable lightdm
-    ```
-
-    - Option 2 - Ly:
-    ```bash
-    sudo pacman -S ly
-    sudo systemctl enable ly@tty1
-    ```
-
-    - Option 3 - No display manager:
-    ```bash
-    echo "exec i3" > ~/.xinitrc # ~/.xinitrc should contain all startup commands
-    startx
-    ```
-
-7. Reboot:
-```bash
-reboot
+echo "exec i3" > ~/.xinitrc # ~/.xinitrc should contain all startup commands
+startx
 ```

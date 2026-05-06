@@ -1,7 +1,21 @@
 require('mason').setup()
 require('mason-lspconfig').setup {
   automatic_installation = true,
-  ensure_installed = { 'ts_ls', 'eslint', 'lua_ls', 'pyright', 'gopls', 'html', 'cssls', 'sqls', 'clangd', 'ocamllsp' },
+  ensure_installed = {
+    'ts_ls',
+    'eslint',
+    'lua_ls',
+    'pyright',
+    'gopls',
+    'html',
+    'cssls',
+    'sqls',
+    'clangd',
+    'ocamllsp',
+    'jsonls',
+    'astro',
+    'rust_analyzer',
+  },
 }
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
@@ -80,7 +94,7 @@ local servers = {
   emmet_ls = {
     on_attach = on_attach,
     capabilities = capabilities,
-    filetypes = { 'html', 'css', 'scss', 'javascript', 'javascriptreact', 'typescriptreact' },
+    filetypes = { 'html', 'css', 'scss', 'javascript', 'javascriptreact', 'typescriptreact', 'astro' },
     init_options = {
       html = { options = { ['output.indent'] = '  ' } },
     },
@@ -92,6 +106,39 @@ local servers = {
   ocamllsp = {
     on_attach = on_attach,
     capabilities = capabilities,
+  },
+  jsonls = {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    settings = {
+      json = {
+        validate = { enable = true },
+        schemas = require('schemastore').json.schemas(),
+      },
+    },
+  },
+  astro = {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    init_options = {
+      typescript = {
+        tsdk = vim.fn.getcwd() .. "/node_modules/typescript/lib",
+      },
+    },
+  },
+  rust_analyzer = {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    settings = {
+      ['rust-analyzer'] = {
+        cargo = {
+          allFeatures = true,
+        },
+        check = {
+          command = "clippy",
+        },
+      },
+    },
   },
 }
 

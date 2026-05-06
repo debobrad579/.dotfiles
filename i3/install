@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+sudo pacman -S --noconfirm --needed i3-wm i3blocks i3lock xss-lock picom rofi \
+  noto-fonts noto-fonts-cjk noto-fonts-extra ttf-jetbrains-mono-nerd papirus-icon-theme \
+  alacritty thunar caligula htop fastfetch iw iwd upower unclutter scrot \
+  base-devel git less wget openssh unzip xdg-utils xclip
+
+mkdir -p "$HOME/Downloads"
+
+if ! command -v yay >/dev/null 2>&1; then
+  rm -rf "$HOME/Downloads/yay-bin"
+  git clone https://aur.archlinux.org/yay-bin.git "$HOME/Downloads/yay-bin"
+  cd "$HOME/Downloads/yay-bin" && makepkg -si
+fi
+
+yay -S --noconfirm --needed zen-browser-bin

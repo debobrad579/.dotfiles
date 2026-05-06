@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+cd $(dirname "${BASH_SOURCE[0]}")
+
+if [ "$#" -eq 0 ]; then
+  for script in $(find . -mindepth 2 -maxdepth 2 -type f -name install -executable); do
+    ./$script
+  done
+else
+  for arg in "$@"; do
+    script="./$arg/install"
+    if [ -f "$script" ] && [ -x "$script" ]; then
+      ./$script
+    else
+      echo "Warning: no executable install script found for '$arg'"
+    fi
+  done
+fi
