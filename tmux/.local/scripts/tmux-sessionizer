@@ -1,4 +1,4 @@
-!/usr/bin/env bash
+#!/usr/bin/env bash
 
 CONFIG_FILE_NAME="tmux-sessionizer.conf"
 CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/tmux-sessionizer"
@@ -160,8 +160,7 @@ hydrate() {
     fi
 }
 
-is_tmux_running() {
-    tmux_running=$(pgrep tmux)
+is_tmux_running() { tmux_running=$(pgrep tmux)
 
     if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
         return 1

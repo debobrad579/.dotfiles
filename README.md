@@ -23,7 +23,13 @@ git clone git@github.com:debobrad579/.dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
 ```
 
-2. Install required dependencies:
+2. Bootstrap Stow (required to properly symlink other configs):
+
+```bash
+stow stow
+```
+
+3. Install required dependencies:
 
 ```bash
 # Install all dependencies:
@@ -33,7 +39,7 @@ cd ~/.dotfiles
 ./install nvim
 ```
 
-3. Symlink configurations:
+4. Symlink configurations:
 
 ```bash
 # Symlink every config:
@@ -46,6 +52,5 @@ stow nvim
 To remove symlinks for a specific module:
 
 ```bash
-cd ~/.dotfiles
 stow -D nvim
 ```

@@ -160,7 +160,7 @@ eval "$(zoxide init --cmd cd zsh)"
 alias ls="ls --color"
 
 # Exports
-export PATH="$HOME/.local/bin:$HOME/go/bin:$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/.local/bin:$HOME/.local/scripts:$HOME/go/bin:$HOME/.cargo/bin:$PATH"
 export EDITOR="nvim"
 export VISUAL="$EDITOR"
 
