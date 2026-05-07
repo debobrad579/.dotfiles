@@ -107,9 +107,6 @@ zvm_after_init() {
   zvm_bindkey viins '^P' history-beginning-search-backward
   zvm_bindkey viins '^N' history-beginning-search-forward
 
-  zvm_bindkey vicmd 'p' zvm_vi_put_after
-  zvm_bindkey vicmd 'P' zvm_vi_put_before
-
   if command -v tmux-sessionizer &>/dev/null; then
     bindkey -s '^f' "tmux-sessionizer\n"
     bindkey -s '\eh' "tmux-sessionizer -s 0\n"
@@ -117,20 +114,6 @@ zvm_after_init() {
     bindkey -s '\ek' "tmux-sessionizer -s 2\n"
     bindkey -s '\el' "tmux-sessionizer -s 3\n"
   fi
-
-  _paste_after() {
-    local clip=$(xclip -o -selection clipboard 2>/dev/null)
-    LBUFFER="${LBUFFER}${RBUFFER:0:1}${clip}"
-    RBUFFER="${RBUFFER:1}"
-  }
-  _paste_before() {
-    local clip=$(xclip -o -selection clipboard 2>/dev/null)
-    LBUFFER="${LBUFFER}${clip}"
-  }
-  zle -N _paste_after
-  zle -N _paste_before
-  zvm_bindkey vicmd 'p' _paste_after
-  zvm_bindkey vicmd 'P' _paste_before
 }
 
 # History

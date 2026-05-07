@@ -5,8 +5,6 @@ vim.opt.relativenumber = true
 
 vim.opt.mouse = 'a'
 
-vim.opt.clipboard = 'unnamedplus'
-
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 

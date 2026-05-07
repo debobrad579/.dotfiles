@@ -6,23 +6,9 @@ return {
     branch = 'main',
     config = function()
       local parsers = {
-        'lua',
-        'javascript',
-        'typescript',
-        'tsx',
-        'html',
-        'css',
-        'python',
-        'go',
-        'ocaml',
-        'bash',
-        'sql',
-        'dockerfile',
-        'make',
-        'json',
-        'yaml',
-        'toml',
-        'rust',
+        'javascript', 'typescript', 'tsx', 'html', 'css',
+        'go', 'rust', 'lua', 'python', 'ocaml', 'bash', 'sql',
+        'dockerfile', 'make', 'json', 'yaml', 'toml', 'vim', 'tmux',
       }
       require('nvim-treesitter').install(parsers)
       vim.api.nvim_create_autocmd('FileType', {
