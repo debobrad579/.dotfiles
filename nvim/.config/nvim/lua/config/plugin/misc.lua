@@ -1,5 +1,9 @@
 return {
-  'tpope/vim-sleuth',
-  'mbbill/undotree',
-  'ThePrimeagen/vim-be-good',
+	"tpope/vim-sleuth",
+	{
+		"mbbill/undotree",
+		config = function()
+			vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
+		end,
+	},
 }

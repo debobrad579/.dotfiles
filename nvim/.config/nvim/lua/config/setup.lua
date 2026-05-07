@@ -1,16 +1,14 @@
 vim.g.netrw_banner = 0
 
-vim.g.have_nerd_font = false
-
 vim.opt.number = true
 vim.opt.relativenumber = true
 
-vim.opt.mouse = 'a'
+vim.opt.mouse = "a"
 
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
-vim.opt.signcolumn = 'yes'
+vim.opt.signcolumn = "yes"
 
 vim.opt.updatetime = 250
 vim.opt.timeoutlen = 300
@@ -24,44 +22,32 @@ vim.opt.confirm = true
 vim.opt.wrap = false
 
 vim.opt.list = false
-vim.opt.tabstop = 2
-vim.opt.shiftwidth = 2
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 vim.opt.breakindent = true
 
 vim.opt.autoindent = true
 vim.opt.smartindent = true
-vim.opt.colorcolumn = "80"
+vim.opt.colorcolumn = "100"
 
 vim.opt.swapfile = false
 vim.opt.backup = false
-vim.opt.undodir = os.getenv('HOME') .. '/.vim.undodir'
+vim.opt.undodir = os.getenv("HOME") .. "/.vim.undodir"
 vim.opt.undofile = true
 
 vim.opt.incsearch = true
 
-vim.api.nvim_create_autocmd('TextYankPost', {
-  desc = 'Highlight when yanking text',
-  group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
-  callback = function()
-    vim.highlight.on_yank()
-  end,
+vim.diagnostic.config({
+	virtual_text = true,
+	signs = true,
+	underline = true,
+	update_in_insert = false,
+	severity_sort = true,
 })
 
-vim.filetype.add({
-  pattern = {
-    ['.*/i3/config.d/.*%.conf'] = 'i3config',
-  },
-})
-
-vim.api.nvim_create_autocmd({ "FileType", "BufReadPost", "BufNewFile" }, {
-  pattern = "astro",
-  callback = function()
-    vim.schedule(function()
-      vim.bo.tabstop = 2
-      vim.bo.shiftwidth = 2
-      vim.bo.softtabstop = 2
-      vim.bo.expandtab = true
-    end)
-  end,
+vim.api.nvim_create_autocmd("TextYankPost", {
+	callback = function()
+		vim.highlight.on_yank()
+	end,
 })

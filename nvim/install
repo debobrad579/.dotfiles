@@ -4,7 +4,12 @@ set -euo pipefail
 NEOVIM_VERSION="v0.12.2"
 
 sudo pacman -S --noconfirm --needed base-devel cmake ninja curl git gettext unzip xclip ripgrep \
-  nodejs npm typescript prettier go python python-black pgformatter opam
+  nodejs npm typescript prettier go python python-black pgformatter opam stylua \
+  typescript-language-server pyright lua-language-server clang gopls
+
+go install github.com/sqls-server/sqls@latest
+
+sudo npm install -g vscode-langservers-extracted @astrojs/language-server
 
 if command -v nvim >/dev/null 2>&1; then
   echo "Neovim is already installed. Skipping."
@@ -29,6 +34,9 @@ if ! command -v rustup >/dev/null 2>&1; then
   curl https://sh.rustup.rs -sSf | sh -s -- -y
   rustup default stable
 fi
+
+source "$HOME/.cargo/env"
+rustup component add rust-analyzer
 
 if ! command -v tree-sitter >/dev/null 2>&1; then
   cargo install tree-sitter-cli
