@@ -15,8 +15,10 @@ vim.keymap.set('n', 'n', 'nzzzv')
 vim.keymap.set('n', 'N', 'Nzzzv')
 
 vim.keymap.set('x', '<leader>p', '"_dP')
-vim.keymap.set({ 'n', 'v' }, '<leader>y', '"+y')
-vim.keymap.set('n', '<leader>Y', 'gg"+yG')
+vim.keymap.set({ 'n', 'x' }, '<leader>y', '"+y')
+vim.keymap.set('n', '<leader>Y', 'mzgg"+yG`z')
+vim.keymap.set({ 'n', 'x' }, '<leader>v', '"+p')
+vim.keymap.set({ 'n', 'x' }, '<leader>V', '"+P')
 
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })

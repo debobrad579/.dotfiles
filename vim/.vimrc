@@ -20,12 +20,32 @@ syntax on
 colorscheme onedark
 
 let mapleader = " "
+let maplocalleader = " "
+
 nnoremap <leader>pv :Ex<CR>
+
 nnoremap <C-p> :GFiles<CR>
 nnoremap <leader>pf :Files<CR>
-vnoremap <leader>p "_dP
-vnoremap <leader>y "+y
-nnoremap <leader>y "+y
-nnoremap <leader>Y gg"+yG
+
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
+
+nnoremap J mzJ`z
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+xnoremap <leader>p "_dP
+
+nnoremap <leader>y "+y
+xnoremap <leader>y "+y
+nnoremap <leader>Y mzgg"+yG`z
+nnoremap <leader>v "+p
+nnoremap <leader>V "+P
+xnoremap <leader>v "_d"+p
+xnoremap <leader>V "_d"+P
+
+nnoremap <leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
+
+nnoremap <leader>x :!chmod +x %<CR>
