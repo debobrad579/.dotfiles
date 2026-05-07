@@ -1,3 +1,5 @@
+vim.g.netrw_banner = 0
+
 vim.g.have_nerd_font = false
 
 vim.opt.number = true
