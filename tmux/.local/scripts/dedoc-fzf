@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+language=$(dedoc list --local --porcelain | fzf --layout=reverse --prompt="Language > ")
+[ -z "$language" ] && exit 0
+
+page=$(dedoc search --porcelain "$language" | fzf --layout=reverse --prompt="Page > ")
+[ -z "$page" ] && exit 0
+
+dedoc open "$language" "$page" | glow - -p
