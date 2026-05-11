@@ -101,6 +101,17 @@ autoload -U compinit && compinit
 zinit cdreplay -q
 
 # Remaps
+tmux_sessionizer_widget() {
+  if [[ -z "$TMUX" ]]; then
+    BUFFER="tmux-sessionizer"
+    zle accept-line
+  else
+    tmux-sessionizer
+  fi
+}
+
+zle -N tmux_sessionizer_widget
+
 ZVM_SYSTEM_CLIPBOARD_ENABLED=true
 zvm_after_init() {
   zvm_bindkey viins '^Y' autosuggest-accept
@@ -108,7 +119,8 @@ zvm_after_init() {
   zvm_bindkey viins '^N' history-beginning-search-forward
 
   if command -v tmux-sessionizer &>/dev/null; then
-    bindkey -s '^f' "tmux-sessionizer\n"
+    bindkey -M viins '^f' tmux_sessionizer_widget
+    bindkey -M vicmd '^f' tmux_sessionizer_widget
   fi
 }
 
@@ -138,11 +150,6 @@ eval "$(zoxide init --cmd cd zsh)"
 # Aliases
 alias ls="ls --color=auto"
 alias grep="grep --color=auto"
-
-# Exports
-export EDITOR="nvim"
-export VISUAL="$EDITOR"
-export PATH="$HOME/.local/bin:$HOME/.local/scripts:$HOME/go/bin:$HOME/.cargo/bin:$PATH"
 
 # Auto activate virtual evironment
 auto_venv() {
