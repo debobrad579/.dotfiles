@@ -35,6 +35,8 @@ if ! command -v rustup >/dev/null 2>&1; then
   rustup default stable
 fi
 
+export PATH="$HOME/.cargo/bin:$PATH"
+
 source "$HOME/.cargo/env"
 rustup component add rust-analyzer
 

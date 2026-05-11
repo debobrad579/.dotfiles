@@ -109,10 +109,6 @@ zvm_after_init() {
 
   if command -v tmux-sessionizer &>/dev/null; then
     bindkey -s '^f' "tmux-sessionizer\n"
-    bindkey -s '\eh' "tmux-sessionizer -s 0\n"
-    bindkey -s '\ej' "tmux-sessionizer -s 1\n"
-    bindkey -s '\ek' "tmux-sessionizer -s 2\n"
-    bindkey -s '\el' "tmux-sessionizer -s 3\n"
   fi
 }
 
@@ -140,12 +136,13 @@ eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
 
 # Aliases
-alias ls="ls --color"
+alias ls="ls --color=auto"
+alias grep="grep --color=auto"
 
 # Exports
-export PATH="$HOME/.local/bin:$HOME/.local/scripts:$HOME/go/bin:$HOME/.cargo/bin:$PATH"
 export EDITOR="nvim"
 export VISUAL="$EDITOR"
+export PATH="$HOME/.local/bin:$HOME/.local/scripts:$HOME/go/bin:$HOME/.cargo/bin:$PATH"
 
 # Auto activate virtual evironment
 auto_venv() {

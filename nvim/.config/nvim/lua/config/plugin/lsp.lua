@@ -102,6 +102,10 @@ return {
 							},
 							check = {
 								command = "clippy",
+								extraArgs = {
+									"--",
+									"-Aclippy::needless_return",
+								},
 							},
 						},
 					},

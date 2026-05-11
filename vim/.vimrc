@@ -16,8 +16,6 @@ endif
 
 call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sleuth'
 Plug 'sheerun/vim-polyglot'
 Plug 'machakann/vim-highlightedyank'
