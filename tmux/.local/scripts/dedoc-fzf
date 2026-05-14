@@ -1,9 +1,15 @@
 #!/usr/bin/env bash
 
-language=$(dedoc list --local --porcelain | fzf --layout=reverse --prompt="Language > ")
-[ -z "$language" ] && exit 0
+selected=$(dedoc list --local --porcelain | fzf --layout=reverse --prompt="Language > ")
+[ -z "$selected" ] && exit 0
 
-page=$(dedoc search --porcelain "$language" | fzf --layout=reverse --prompt="Page > ")
+page=$(dedoc search --porcelain "$selected" | fzf --layout=reverse --prompt="Page > ")
 [ -z "$page" ] && exit 0
 
-dedoc open "$language" "$page" | glow - -p
+content=$(dedoc open "$selected" "$page")
+
+if bat --list-languages | grep -qi "\b${selected}\b"; then
+  echo "$content" | bat -l "$selected" --style=plain --paging=always --pager "less -RX"
+else
+  echo "$content" | less -RX
+fi

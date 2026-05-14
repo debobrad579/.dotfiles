@@ -5,49 +5,21 @@ return {
 			"hrsh7th/cmp-nvim-lsp",
 		},
 		config = function()
-			local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
 			vim.api.nvim_create_autocmd("LspAttach", {
 				callback = function(args)
-					local bufmap = function(mode, lhs, rhs, desc)
-						vim.keymap.set(mode, lhs, rhs, { buffer = args.buf, desc = desc })
-					end
-					bufmap("n", "gd", vim.lsp.buf.definition, "Go to definition")
-					bufmap("n", "<leader>d", vim.lsp.buf.hover, "Hover documentation")
-					bufmap("n", "<leader>rn", vim.lsp.buf.rename, "Rename")
-					bufmap("n", "<leader>q", vim.diagnostic.setloclist, "Open diagnostic list")
-					bufmap("n", "<leader>e", vim.diagnostic.open_float, "Open diagnostic float")
-					bufmap("n", "<leader>ca", vim.lsp.buf.code_action, "Code action")
+					vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = args.buf })
+					vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = args.buf })
+					vim.keymap.set("n", "grn", vim.lsp.buf.rename, { buffer = args.buf })
+					vim.keymap.set("n", "gra", vim.lsp.buf.code_action, { buffer = args.buf })
+					vim.keymap.set("n", "grr", vim.lsp.buf.references, { buffer = args.buf })
+					vim.keymap.set("n", "gri", vim.lsp.buf.implementation, { buffer = args.buf })
+					vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { buffer = args.buf })
+					vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { buffer = args.buf })
 				end,
 			})
 
 			local servers = {
-				ts_ls = {
-					capabilities = capabilities,
-					settings = {
-						typescript = {
-							preferences = {
-								preferTypeOnlyAutoImports = true,
-							},
-						},
-					},
-				},
-				eslint = {
-					capabilities = capabilities,
-				},
-				lua_ls = {
-					capabilities = capabilities,
-					settings = {
-						Lua = {
-							diagnostics = { globals = { "vim" } },
-							runtime = { version = "LuaJIT" },
-							workspace = { library = vim.api.nvim_get_runtime_file("", true) },
-							telemetry = { enable = false },
-						},
-					},
-				},
 				pyright = {
-					capabilities = capabilities,
 					settings = {
 						python = {
 							analysis = {
@@ -58,26 +30,36 @@ return {
 						},
 					},
 				},
-				gopls = {
-					capabilities = capabilities,
+				lua_ls = {
+					settings = {
+						Lua = {
+							diagnostics = { globals = { "vim" } },
+							runtime = { version = "LuaJIT" },
+							workspace = { library = vim.api.nvim_get_runtime_file("", true) },
+							telemetry = { enable = false },
+						},
+					},
 				},
-				html = {
-					capabilities = capabilities,
+				ts_ls = {
+					on_attach = function(client)
+						client.server_capabilities.documentFormattingProvider = false
+					end,
+					settings = {
+						typescript = {
+							preferences = {
+								preferTypeOnlyAutoImports = true,
+							},
+						},
+					},
 				},
-				cssls = {
-					capabilities = capabilities,
-				},
-				sqls = {
-					capabilities = capabilities,
-				},
-				clangd = {
-					capabilities = capabilities,
-				},
-				ocamllsp = {
-					capabilities = capabilities,
+				astro = {
+					init_options = {
+						typescript = {
+							tsdk = "/usr/lib/node_modules/typescript/lib",
+						},
+					},
 				},
 				jsonls = {
-					capabilities = capabilities,
 					settings = {
 						json = {
 							validate = { enable = true },
@@ -85,16 +67,13 @@ return {
 						},
 					},
 				},
-				astro = {
-					capabilities = capabilities,
-					init_options = {
-						typescript = {
-							tsdk = "/usr/lib/node_modules/typescript/lib",
-						},
-					},
-				},
+				html = {},
+				cssls = {},
+				sqls = {},
+				clangd = {},
+				ocamllsp = {},
+				gopls = {},
 				rust_analyzer = {
-					capabilities = capabilities,
 					settings = {
 						["rust-analyzer"] = {
 							cargo = {
@@ -112,24 +91,14 @@ return {
 				},
 			}
 
-			vim.api.nvim_create_autocmd("LspAttach", {
-				callback = function(args)
-					local client = vim.lsp.get_client_by_id(args.data.client_id)
-					if client and client.name == "ts_ls" then
-						client.server_capabilities.documentFormattingProvider = false
-					end
-				end,
-			})
-
+			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 			for server, config in pairs(servers) do
+				config.capabilities = capabilities
 				vim.lsp.config(server, config)
 				vim.lsp.enable(server)
 			end
 		end,
 	},
-	{
-		"j-hui/fidget.nvim",
-		opts = {},
-	},
+	"j-hui/fidget.nvim",
 	"b0o/schemastore.nvim",
 }
