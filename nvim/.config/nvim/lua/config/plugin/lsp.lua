@@ -7,8 +7,8 @@ return {
 		config = function()
 			vim.api.nvim_create_autocmd("LspAttach", {
 				callback = function(args)
-					vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = args.buf })
 					vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = args.buf })
+					vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = args.buf })
 					vim.keymap.set("n", "grn", vim.lsp.buf.rename, { buffer = args.buf })
 					vim.keymap.set("n", "gra", vim.lsp.buf.code_action, { buffer = args.buf })
 					vim.keymap.set("n", "grr", vim.lsp.buf.references, { buffer = args.buf })
@@ -70,6 +70,7 @@ return {
 				html = {},
 				cssls = {},
 				sqls = {},
+				bashls = {},
 				clangd = {},
 				ocamllsp = {},
 				gopls = {},

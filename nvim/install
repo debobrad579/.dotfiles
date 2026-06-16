@@ -5,7 +5,7 @@ NEOVIM_VERSION="v0.12.2"
 
 sudo pacman -S --noconfirm --needed base-devel cmake ninja curl git gettext unzip xclip ripgrep \
   nodejs npm typescript prettier go python python-black pgformatter opam stylua \
-  typescript-language-server pyright lua-language-server clang gopls
+  typescript-language-server bash-language-server pyright lua-language-server clang gopls
 
 go install github.com/sqls-server/sqls@latest
 
