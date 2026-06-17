@@ -1,14 +1,8 @@
 * {
-  black:      #000000;
-  red:        #eb6e67;
-  green:      #95ee8f;
-  yellow:     #f8c456;
-  blue:       #61afef;
-  mangenta:   #d886f3;
-  cyan:       #6cdcf7;
-  emphasis:   #50536b;
-  text:       #dfdfdf;
-  text-alt:   #b2b2b2;
-  fg:         #abb2bf;
-  bg:         #282c34;
+  bg:         #21252B;
+  bg-alt:     #282C34;
+  danger:     #EB6E67;
+  primary:    #56B6C2;
+  text:       #DFDFDF;
+  text-alt:   #B2B2B2;
 }

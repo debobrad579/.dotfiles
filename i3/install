@@ -1,14 +1,13 @@
 #!/usr/bin/env bash
 
 sudo pacman -S --noconfirm --needed xorg-server xorg-xinit xorg-xrandr xdg-utils xclip \
-  i3-wm i3lock xss-lock picom rofi feh brightnessctl ly unclutter scrot playerctl spotifyd \
+  i3-wm i3lock xss-lock picom rofi feh brightnessctl ly dunst unclutter scrot \
   noto-fonts noto-fonts-cjk noto-fonts-extra ttf-jetbrains-mono-nerd papirus-icon-theme \
-  alacritty thunar caligula htop fastfetch
+  alacritty spotify-player thunar caligula htop fastfetch
 
 sudo systemctl enable ly@tty1
 
 loginctl enable-linger "$USER"
-systemctl --user enable --now spotifyd
 
 if command -v yay >/dev/null 2>&1; then
   yay -S --noconfirm --needed zen-browser-bin

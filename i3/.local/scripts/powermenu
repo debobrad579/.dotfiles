@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+CHOSEN=$(printf "Lock\nSuspend\nPower Off\nReboot\nLog Out" | rofi -dmenu -i -p "Power:")
+
+case "$CHOSEN" in
+    "Lock") i3lock -n -c 282C34 ;;
+    "Suspend") systemctl suspend-then-hibernate ;;
+    "Power Off") poweroff ;;
+    "Reboot") reboot ;;
+    "Log Out") logout
+esac
