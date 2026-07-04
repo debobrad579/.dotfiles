@@ -2,7 +2,7 @@
 
 render() {
     if ! systemctl is-active --quiet bluetooth; then
-        echo "%{F#5C6370}󰂲%{F-}"
+        echo ""
         return
     fi
 
@@ -26,7 +26,7 @@ render() {
     done < <(busctl tree org.bluez 2>/dev/null | grep -oP '/org/bluez/hci\d+/dev_\S+' | sort -u)
 
     if [[ -z "$icons" ]]; then
-        echo "%{F#5C6370}󰂯%{F-}"
+        echo ""
     else
         echo "%{F#0082FC}${icons% }%{F-}"
     fi
