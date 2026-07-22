@@ -3,7 +3,7 @@ set -euo pipefail
 
 NEOVIM_VERSION="v0.12.2"
 
-sudo pacman -S --noconfirm --needed base-devel cmake ninja curl git gettext unzip xclip ripgrep \
+sudo pacman -S --noconfirm --needed base-devel cmake ninja curl git gettext unzip ripgrep \
   nodejs npm typescript prettier go python python-black pgformatter opam stylua \
   typescript-language-server bash-language-server pyright lua-language-server clang gopls
 
