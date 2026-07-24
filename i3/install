@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-sudo pacman -S --noconfirm --needed xorg-server xorg-xinit xorg-xrandr xdg-utils xclip \
+sudo pacman -S --noconfirm --needed xorg-server xorg-xinit xorg-xinput xorg-xrandr xdg-utils xclip \
   i3-wm i3lock picom rofi feh brightnessctl ly dunst unclutter scrot playerctl \
   noto-fonts noto-fonts-cjk noto-fonts-extra ttf-jetbrains-mono-nerd papirus-icon-theme \
   alacritty spotify-launcher thunar caligula htop fastfetch
