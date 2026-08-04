@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
-CHOSEN=$(printf "Lock\nSuspend\nPower Off\nReboot\nLog Out" | wofi --show dmenu --prompt "Power")
+CHOSEN=$(printf "Lock\nSuspend\nPower Off\nReboot\nLog Out" | wofi -i --show dmenu --prompt "Power")
 
 case "$CHOSEN" in
-    "Lock") i3lock -n -c 282C34 ;;
+    "Lock") swaylock -n -c 282C34 ;;
     "Suspend") systemctl suspend ;;
     "Power Off") poweroff ;;
     "Reboot") reboot ;;

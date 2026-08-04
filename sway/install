@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-sudo pacman -S --noconfirm --needed sway swaybg wl-clipboard waybar wofi xdg-utils \
+sudo pacman -S --noconfirm --needed sway swaybg swaylock wl-clipboard waybar wofi xdg-utils \
   noto-fonts noto-fonts-cjk noto-fonts-extra ttf-jetbrains-mono-nerd papirus-icon-theme \
   alacritty spotify-launcher thunar caligula htop fastfetch playerctl
 
