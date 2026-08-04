@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-sudo pacman -S --noconfirm --needed base-devel git less wget openssh unzip pciutils \
+sudo pacman -S --noconfirm --needed base-devel git less wget openssh unzip pciutils ly \
   pipewire pipewire-alsa pipewire-jack pipewire-pulse wireplumber \
   networkmanager reflector iw iwd upower bluez bluez-utils \
   cups cups-pk-helper system-config-printer \
@@ -35,10 +35,10 @@ if [ ! -d "/var/lib/postgres/data" ]; then
   sudo -u postgres initdb --locale en_CA.UTF-8 -D /var/lib/postgres/data
 fi
 
-sudo systemctl enable --now NetworkManager bluetooth cups postgresql docker
-
+sudo systemctl enable --now NetworkManager bluetooth cups postgresql docker systemd-resolved.service ly@tty1
 sudo usermod -aG docker "$USER"
 sudo usermod -aG lp "$USER"
+loginctl enable-linger "$USER"
 
 sudo cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak
 sudo reflector \
