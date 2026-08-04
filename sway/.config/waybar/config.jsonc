@@ -112,6 +112,6 @@
     },
     "custom/power": {
         "format": "<span size='130%'>⏻</span>",
-        "on-click": "powermenu"
+        "on-click": "wofi-powermenu"
     }
 }

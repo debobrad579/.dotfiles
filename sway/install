@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-sudo pacman -S --noconfirm --needed sway swaybg wl-clipboard waybar playerctl \
+sudo pacman -S --noconfirm --needed sway swaybg wl-clipboard waybar wofi xdg-utils \
   noto-fonts noto-fonts-cjk noto-fonts-extra ttf-jetbrains-mono-nerd papirus-icon-theme \
-  alacritty spotify-launcher thunar caligula htop fastfetch
+  alacritty spotify-launcher thunar caligula htop fastfetch playerctl
 
 if command -v yay >/dev/null 2>&1; then
   yay -S --noconfirm --needed zen-browser-bin
