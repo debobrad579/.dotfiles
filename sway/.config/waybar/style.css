@@ -11,7 +11,7 @@ window#waybar {
 #workspaces button {
   padding: 0 8px;
   color: #abb2bf;
-  border-bottom: 3px solid transparent;
+  border-bottom: 3px solid #282c34;
 }
 
 #workspaces button.focused,
@@ -21,7 +21,6 @@ window#waybar {
 }
 
 #workspaces button:hover {
-  transition: none;
   background-color: #21252b;
   background-image: none;
   border-color: #21252b;
@@ -30,7 +29,7 @@ window#waybar {
 }
 
 #workspaces button.urgent {
-  background: #e06c75;
+  color: #e06c75;
 }
 
 #workspaces button.empty {
