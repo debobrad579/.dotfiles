@@ -4,7 +4,7 @@ SCRIPT_DIR=$(
     cd -- "$(dirname -- "$0")" && pwd
 )
 
-sudo pacman -S --needed keyd
+sudo pacman -S --noconfirm --needed keyd
 sudo systemctl enable keyd --now
 sudo cp -f "$SCRIPT_DIR/default.conf" /etc/keyd/default.conf
 sudo keyd reload
