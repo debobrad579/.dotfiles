@@ -80,22 +80,27 @@
             "warning": 20,
             "critical": 10
         },
-        "format-charging": "󰂄 {capacity}%",
-        "format-discharging": "{icon} {capacity}%",
-        "format-full": "󰁹 100%",
-        "format-critical": "󰂃 {capacity}%",
-        "format-icons": [
-            "󰂎",
-            "󰁺",
-            "󰁻",
-            "󰁼",
-            "󰁽",
-            "󰁾",
-            "󰁿",
-            "󰂀",
-            "󰂁",
-            "󰂂"
-        ]
+        "format": "{icon} {capacity}%",
+        "format-icons": {
+            "default": [
+                "󰁹"
+            ],
+            "charging": [
+                "󰂄"
+            ],
+            "discharging": [
+                "󰂎",
+                "󰁺",
+                "󰁻",
+                "󰁼",
+                "󰁽",
+                "󰁾",
+                "󰁿",
+                "󰂀",
+                "󰂁",
+                "󰂂"
+            ]
+        }
     },
     "clock": {
         "interval": 1,
