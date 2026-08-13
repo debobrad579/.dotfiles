@@ -8,7 +8,7 @@
         "sway/workspaces"
     ],
     "modules-center": [
-        "custom/spotify"
+        "custom/music"
     ],
     "modules-right": [
         "bluetooth",
@@ -107,13 +107,13 @@
         "format": "{:%H:%M}",
         "tooltip-format": "{:%Y-%m-%d %H:%M:%S}"
     },
-    "custom/spotify": {
-        "exec": "waybar-spotify",
+    "custom/music": {
+        "exec": "waybar-music",
         "tooltip": false,
         "escape": true,
-        "on-click": "playerctl -p spotify play-pause",
-        "on-scroll-up": "playerctl -p spotify volume 0.05+",
-        "on-scroll-down": "playerctl -p spotify volume 0.05-"
+        "on-click": "playerctl -p 'mprisence_web.youtube_music' play-pause",
+        "on-scroll-up": "playerctl -p 'mprisence_web.youtube_music' volume 0.05+",
+        "on-scroll-down": "playerctl -p 'mprisence_web.youtube_music' volume 0.05-"
     },
     "custom/power": {
         "format": "<span size='130%'>⏻</span>",
