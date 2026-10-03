@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+
+root_pid=$(pgrep -of 'user-data-dir=.*chromium-music') || {
+    echo "music Chromium instance isn't running" >&2
+    exit 1
+}
+
+pids=("$root_pid")
+
+for pid in "${pids[@]}"; do
+    while read -r child; do
+        [[ -n "$child" ]] && pids+=("$child")
+    done < <(pgrep -P "$pid")
+done
+
+pid_json=$(
+    printf '%s\n' "${pids[@]}" |
+        jq -Rsc 'split("\n") | map(select(length > 0) | tonumber)'
+)
+
+node=$(
+    pw-dump |
+    jq -r --argjson pids "$pid_json" '
+        .[] |
+        select(.info?.props?["media.class"] == "Stream/Output/Audio") |
+        select(
+            .info.props["application.process.id"] as $pid |
+            ($pids | index($pid))
+        ) |
+        .id
+    ' |
+    head -n1
+)
+
+if [[ -z "$node" ]]; then
+    echo "music Chromium audio stream isn't running" >&2
+    exit 1
+fi
+
+exec wpctl set-volume "$node" "$@"

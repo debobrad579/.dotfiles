@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-sudo pacman -S --noconfirm --needed sway swaybg swayidle swaylock wl-clipboard waybar wofi xdg-utils \
+sudo pacman -S --noconfirm --needed sway swaybg swayidle swaylock wl-clipboard waybar wofi xdg-utils xorg-xwayland \
   noto-fonts noto-fonts-cjk noto-fonts-extra ttf-jetbrains-mono-nerd papirus-icon-theme \
   alacritty chromium thunar caligula htop fastfetch playerctl
-
-yay -S --noconfirm --needed mprisence-bin
-mprisence web install

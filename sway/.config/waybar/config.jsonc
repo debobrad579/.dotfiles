@@ -110,9 +110,9 @@
         "exec": "waybar-music",
         "tooltip": false,
         "escape": true,
-        "on-click": "playerctl -p 'mprisence_web.youtube_music' play-pause",
-        "on-scroll-up": "playerctl -p 'mprisence_web.youtube_music' volume 0.05+",
-        "on-scroll-down": "playerctl -p 'mprisence_web.youtube_music' volume 0.05-"
+        "on-click": "musicctl play-pause",
+        "on-scroll-up": "music-volume 5%+",
+        "on-scroll-down": "music-volume 5%-"
     },
     "custom/power": {
         "format": "<span size='130%'>⏻</span>",

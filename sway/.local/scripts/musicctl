@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+pid=$(pgrep -of 'user-data-dir=.*chromium-music')
+
+if [ -z "$pid" ]; then
+    echo "music Chromium instance isn't running" >&2
+    exit 1
+fi
+
+exec playerctl -p "chromium.instance$pid" "$@"
