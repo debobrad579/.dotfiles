@@ -36,7 +36,8 @@
             "󰃟",
             "󰃝",
             "󰃠"
-        ]
+        ],
+        "tooltip": false
     },
     "pulseaudio": {
         "tooltip": false,
@@ -49,9 +50,7 @@
                 "󰕾"
             ]
         },
-        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
-        "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +5%",
-        "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -5%"
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle"
     },
     "network": {
         "interval": 5,
@@ -71,7 +70,7 @@
     },
     "bluetooth": {
         "format": "",
-        "format-connected": "󰂯 {device_alias}"
+        "format-connected": "󰂯"
     },
     "battery": {
         "bat": "BAT1",
@@ -107,18 +106,20 @@
     "clock": {
         "interval": 1,
         "format": "{:%H:%M}",
-        "tooltip-format": "{:%Y-%m-%d %H:%M:%S}"
+        "tooltip-format": "{:%Y-%m-%d %H:%M:%S}",
+        "tooltip": false
     },
     "custom/music": {
         "exec": "waybar-music",
         "tooltip": false,
         "escape": true,
         "on-click": "musicctl play-pause",
-        "on-scroll-up": "music-volume 5%+",
-        "on-scroll-down": "music-volume 5%-"
+        "on-scroll-up": "music-volume 1%+",
+        "on-scroll-down": "music-volume 1%-"
     },
     "custom/power": {
         "format": "<span size='130%'>⏻</span>",
-        "on-click": "wofi-powermenu"
+        "on-click": "wofi-powermenu",
+        "tooltip": false
     }
 }

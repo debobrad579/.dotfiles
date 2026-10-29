@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-NEOVIM_VERSION="v0.12.2"
+NEOVIM_VERSION="v0.12.6"
 
 sudo pacman -S --noconfirm --needed base-devel cmake ninja curl git gettext unzip ripgrep \
   nodejs npm typescript prettier go python python-black pgformatter opam stylua \

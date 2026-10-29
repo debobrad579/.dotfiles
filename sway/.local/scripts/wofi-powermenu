@@ -7,5 +7,5 @@ case "$CHOSEN" in
     "Suspend") systemctl suspend ;;
     "Power Off") poweroff ;;
     "Reboot") reboot ;;
-    "Log Out") logout
+    "Log Out") swaymsg exit
 esac
