@@ -21,7 +21,7 @@
     ],
     "sway/workspaces": {
         "disable-scroll": true,
-        "all-outputs": true,
+        "all-outputs": false,
         "format": "<span size='130%'>{icon}</span>",
         "format-icons": {
             "1": "",
@@ -74,6 +74,7 @@
     },
     "battery": {
         "bat": "BAT1",
+        "full-at": 80,
         "tooltip": false,
         "adapter": "ACAD",
         "interval": 30,
