@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+brightness=$(brightnessctl -m | cut -d, -f4 | tr -d '%')
+change=${1%\%}
+
+if (( brightness == 1 && change != 1 )); then
+    brightness=$((change))
+else
+    brightness=$((brightness + change))
+fi
+
+((brightness > 100)) && brightness=100
+((brightness < 1)) && brightness=1
+
+brightnessctl set "${brightness}%"
