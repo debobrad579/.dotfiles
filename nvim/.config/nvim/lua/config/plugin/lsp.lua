@@ -74,6 +74,7 @@ return {
 				clangd = {},
 				ocamllsp = {},
 				gopls = {},
+				zls = {},
 				rust_analyzer = {
 					settings = {
 						["rust-analyzer"] = {

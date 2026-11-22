@@ -75,6 +75,7 @@
         "format-connected": "󰂯"
     },
     "battery": {
+        "on-click": "wofi-power-profile-menu",
         "bat": "BAT1",
         "full-at": 80,
         "tooltip": false,

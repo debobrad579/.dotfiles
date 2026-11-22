@@ -2,4 +2,4 @@
 
 sudo pacman -S --noconfirm --needed sway swaybg swayidle swaylock wl-clipboard waybar wofi xdg-utils xorg-xwayland \
   noto-fonts noto-fonts-cjk noto-fonts-extra ttf-jetbrains-mono-nerd papirus-icon-theme \
-  alacritty chromium thunar caligula htop fastfetch playerctl
+  alacritty chromium thunar caligula htop fastfetch playerctl power-profiles-daemon

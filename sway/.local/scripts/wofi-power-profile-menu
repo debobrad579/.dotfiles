@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+PROFILE=$(powerprofilesctl get)
+
+CHOSEN=$(printf "Performance\nBalanced\nPower Saver\n" | wofi --show dmenu --prompt "Power Profile ($PROFILE)" --lines 3)
+
+case "$CHOSEN" in
+    "Performance") powerprofilesctl set performance ;;
+    "Balanced") powerprofilesctl set balanced ;;
+    "Power Saver") powerprofilesctl set power-saver ;;
+esac

@@ -4,8 +4,8 @@ set -euo pipefail
 NEOVIM_VERSION="v0.12.6"
 
 sudo pacman -S --noconfirm --needed base-devel cmake ninja curl git gettext unzip ripgrep \
-  nodejs npm typescript prettier go python python-black pgformatter opam stylua \
-  typescript-language-server bash-language-server pyright lua-language-server clang gopls
+  nodejs npm typescript prettier go zig python python-black pgformatter opam stylua \
+  typescript-language-server bash-language-server pyright lua-language-server clang gopls zls
 
 go install github.com/sqls-server/sqls@latest
 

@@ -15,6 +15,7 @@ return {
 				"rust",
 				"c",
 				"lua",
+				"zig",
 				"python",
 				"ocaml",
 				"bash",
