@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -e
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+cp "$SCRIPT_DIR/vim/.vimrc" "$HOME/.vimrc"
+cp "$SCRIPT_DIR/bash/.bashrc" "$HOME/.bashrc"
+cp "$SCRIPT_DIR/tmux/.config/tmux/tmux.conf" "$HOME/.tmux.conf"
+
+echo "Configuration files copied successfully."
